@@ -10,7 +10,7 @@ services:
     environment:
       - cacheSizeGB=2
     volumes:
-      - ${dataPath}/db:/data/db
+      - /opt/ambar/db:/data/db
     expose:
       - "27017"   
   es:
@@ -33,7 +33,7 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - ${dataPath}/es:/usr/share/elasticsearch/data
+      - /opt/ambar/es:/usr/share/elasticsearch/data
   rabbit:
     restart: always
     networks:
@@ -110,7 +110,7 @@ services:
     expose:
       - "80"
     environment:
-      - api=http://${ambarHostIpAddress}:8080  
+      - api=http://13.66.245.4:8080  
   pipeline0:
     depends_on: 
       serviceapi: 
